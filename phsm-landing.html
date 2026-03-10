@@ -1,0 +1,798 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CrossBar PHSM</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              crossbar: {
+                bg: "#08090b",
+                panel: "#0b0d10",
+                panel2: "#0e1014",
+                text: "#f5f5f4",
+                muted: "rgba(255,255,255,0.72)",
+                line: "rgba(255,255,255,0.10)",
+                amber: "#fbbf24",
+                orange: "#f97316",
+              },
+            },
+            boxShadow: {
+              glow: "0 30px 120px rgba(0,0,0,0.45)",
+              soft: "0 20px 60px rgba(0,0,0,0.35)",
+            },
+            borderRadius: {
+              "4xl": "2rem",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        background: #08090b;
+        color: #fff;
+        font-family:
+          Inter,
+          ui-sans-serif,
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+      }
+      .hero-glow::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(
+            circle at top,
+            rgba(251, 191, 36, 0.08),
+            transparent 30%
+          ),
+          linear-gradient(to bottom, rgba(255, 255, 255, 0.02), transparent 20%);
+        pointer-events: none;
+      }
+    </style>
+  </head>
+  <body class="min-h-screen bg-crossbar-bg text-white antialiased">
+    <div class="relative overflow-hidden hero-glow">
+      <div
+        class="absolute -left-24 top-16 h-72 w-72 rounded-full bg-amber-500/20 blur-3xl"
+      ></div>
+      <div
+        class="absolute right-0 top-0 h-96 w-96 rounded-full bg-orange-500/10 blur-3xl"
+      ></div>
+
+      <header
+        class="sticky top-0 z-40 border-b border-white/10 bg-[#08090b]/80 backdrop-blur-xl"
+      >
+        <div
+          class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8"
+        >
+          <div class="flex items-center gap-3">
+            <div
+              class="flex h-10 w-10 items-center justify-center rounded-2xl border border-white/10 bg-white/5 shadow-[0_0_40px_rgba(251,191,36,0.08)]"
+            >
+              <div
+                class="h-4 w-4 rounded-full bg-gradient-to-br from-amber-300 to-orange-500"
+              ></div>
+            </div>
+            <div>
+              <div class="text-[11px] uppercase tracking-[0.3em] text-white/45">
+                CrossBar
+              </div>
+              <div class="text-sm font-medium text-white/90">PHSM</div>
+            </div>
+          </div>
+
+          <nav class="hidden items-center gap-7 md:flex">
+            <a
+              href="#technology"
+              class="text-sm text-white/65 transition hover:text-white"
+              >Technology</a
+            >
+            <a
+              href="#products"
+              class="text-sm text-white/65 transition hover:text-white"
+              >Products</a
+            >
+            <a
+              href="#architecture"
+              class="text-sm text-white/65 transition hover:text-white"
+              >Architecture</a
+            >
+            <a
+              href="#use-cases"
+              class="text-sm text-white/65 transition hover:text-white"
+              >Use Cases</a
+            >
+            <a
+              href="#faq"
+              class="text-sm text-white/65 transition hover:text-white"
+              >FAQ</a
+            >
+          </nav>
+
+          <div class="flex items-center gap-3">
+            <a
+              href="#"
+              class="hidden rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/80 transition hover:bg-white/10 md:inline-flex"
+              >Documentation</a
+            >
+            <a
+              href="#contact"
+              class="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-amber-300 via-orange-400 to-amber-500 px-4 py-2 text-sm font-semibold text-black transition hover:scale-[1.02]"
+              >Contact Sales <span>→</span></a
+            >
+          </div>
+        </div>
+      </header>
+
+      <section
+        class="relative mx-auto max-w-7xl px-6 pb-24 pt-16 lg:px-8 lg:pt-24"
+      >
+        <div class="grid items-center gap-14 lg:grid-cols-[1.1fr_0.9fr]">
+          <div>
+            <div
+              class="mb-6 inline-flex items-center rounded-full border border-amber-400/20 bg-amber-400/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.3em] text-amber-300"
+            >
+              True Hardware. True MPC.
+            </div>
+            <h1
+              class="max-w-4xl text-5xl font-semibold leading-[0.95] tracking-[-0.04em] text-white sm:text-6xl lg:text-7xl"
+            >
+              Security hardware built for the era of
+              <span
+                class="bg-gradient-to-r from-amber-200 via-amber-400 to-orange-500 bg-clip-text text-transparent"
+              >
+                digital asset sovereignty</span
+              >.
+            </h1>
+            <p
+              class="mt-7 max-w-2xl text-base leading-8 text-white/72 sm:text-lg"
+            >
+              CrossBar PHSM combines secure-element MPC computation, ReRAM-based
+              storage, FIDO2 authentication, and crypto-native architecture in a
+              portable hardware security module designed for both self-custody
+              and institutional workflows.
+            </p>
+            <div class="mt-10 flex flex-wrap gap-4">
+              <a
+                href="#contact"
+                class="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-black transition hover:bg-amber-100"
+                >Request Demo <span>→</span></a
+              >
+              <a
+                href="#architecture"
+                class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-6 py-3 text-sm font-medium text-white/85 transition hover:bg-white/10"
+                >Explore Architecture <span>›</span></a
+              >
+            </div>
+
+            <div class="mt-12 grid gap-4 sm:grid-cols-2">
+              <div
+                class="rounded-3xl border border-white/10 bg-white/[0.04] p-5 backdrop-blur"
+              >
+                <div
+                  class="mb-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-amber-300/20 to-orange-500/20 text-amber-300"
+                >
+                  🛡️
+                </div>
+                <div class="text-sm font-semibold text-white">
+                  True MPC on secure element
+                </div>
+                <p class="mt-2 text-sm leading-6 text-white/65">
+                  Perform MPC computation inside secure hardware without
+                  reconstructing the full private key.
+                </p>
+              </div>
+              <div
+                class="rounded-3xl border border-white/10 bg-white/[0.04] p-5 backdrop-blur"
+              >
+                <div
+                  class="mb-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-amber-300/20 to-orange-500/20 text-amber-300"
+                >
+                  ◈
+                </div>
+                <div class="text-sm font-semibold text-white">
+                  ReRAM-based secure storage
+                </div>
+                <p class="mt-2 text-sm leading-6 text-white/65">
+                  Built on CrossBar's ReRAM platform for durable,
+                  tamper-resistant, long-retention key protection.
+                </p>
+              </div>
+              <div
+                class="rounded-3xl border border-white/10 bg-white/[0.04] p-5 backdrop-blur"
+              >
+                <div
+                  class="mb-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-amber-300/20 to-orange-500/20 text-amber-300"
+                >
+                  🔑
+                </div>
+                <div class="text-sm font-semibold text-white">
+                  FIDO2 + passkey ready
+                </div>
+                <p class="mt-2 text-sm leading-6 text-white/65">
+                  Use the same hardware foundation for phishing-resistant
+                  authentication across accounts and devices.
+                </p>
+              </div>
+              <div
+                class="rounded-3xl border border-white/10 bg-white/[0.04] p-5 backdrop-blur"
+              >
+                <div
+                  class="mb-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-amber-300/20 to-orange-500/20 text-amber-300"
+                >
+                  🔒
+                </div>
+                <div class="text-sm font-semibold text-white">
+                  Offline by default
+                </div>
+                <p class="mt-2 text-sm leading-6 text-white/65">
+                  Designed to minimize exposure surface and keep high-assurance
+                  signing physically anchored to hardware.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="relative">
+            <div
+              class="absolute -inset-6 rounded-[2rem] bg-gradient-to-br from-amber-400/10 via-transparent to-orange-500/10 blur-2xl"
+            ></div>
+            <div
+              class="relative rounded-[2rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.02))] p-5 shadow-glow"
+            >
+              <div class="grid gap-5">
+                <div
+                  class="rounded-[1.75rem] border border-white/10 bg-[#0e1014] p-5"
+                >
+                  <div class="flex items-center justify-between">
+                    <div>
+                      <div
+                        class="text-xs uppercase tracking-[0.28em] text-white/40"
+                      >
+                        Flagship hardware
+                      </div>
+                      <div class="mt-2 text-2xl font-semibold">PHSM 8</div>
+                    </div>
+                    <div
+                      class="rounded-full border border-amber-300/20 bg-amber-300/10 px-3 py-1 text-xs font-medium text-amber-300"
+                    >
+                      Active card
+                    </div>
+                  </div>
+                  <div
+                    class="mt-6 rounded-[1.5rem] border border-white/10 bg-[radial-gradient(circle_at_top,rgba(251,191,36,0.18),rgba(255,255,255,0.03)_30%,rgba(255,255,255,0.01)_60%)] px-6 py-8"
+                  >
+                    <div
+                      class="mx-auto w-full max-w-[340px] rounded-[2rem] border border-white/10 bg-gradient-to-b from-neutral-900 to-neutral-950 p-4 shadow-soft"
+                    >
+                      <div
+                        class="aspect-[1.68/1] rounded-[1.4rem] border border-white/10 bg-[linear-gradient(160deg,#f4ecd5,#dad0b3)] p-4 text-neutral-900"
+                      >
+                        <div class="flex h-full flex-col justify-between">
+                          <div class="flex items-start justify-between">
+                            <div>
+                              <div
+                                class="text-[10px] uppercase tracking-[0.28em] text-neutral-500"
+                              >
+                                CrossBar
+                              </div>
+                              <div class="mt-2 text-lg font-semibold">
+                                PHSM 8 Series
+                              </div>
+                            </div>
+                            <span class="text-neutral-700">🛡️</span>
+                          </div>
+                          <div
+                            class="rounded-2xl border border-neutral-300/70 bg-white/60 p-3 backdrop-blur-sm"
+                          >
+                            <div class="text-xs text-neutral-500">
+                              Review Transaction
+                            </div>
+                            <div class="mt-1 text-sm font-semibold">
+                              Authorize MPC Signature
+                            </div>
+                            <div
+                              class="mt-3 flex items-center justify-between text-xs text-neutral-600"
+                            >
+                              <span>BTC Treasury</span>
+                              <span>Threshold 2/3</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="mt-4 flex items-center justify-between text-xs text-white/45"
+                      >
+                        <span>Bluetooth</span>
+                        <span>NFC</span>
+                        <span>E-ink</span>
+                        <span>FIDO2</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="grid gap-5 sm:grid-cols-2">
+                  <div
+                    class="rounded-[1.5rem] border border-white/10 bg-white/[0.04] p-5"
+                  >
+                    <div
+                      class="mb-4 flex h-10 w-10 items-center justify-center rounded-2xl bg-white/5 text-amber-300"
+                    >
+                      ◎
+                    </div>
+                    <div class="text-base font-semibold">PHSM 6 Series</div>
+                    <p class="mt-2 text-sm leading-6 text-white/65">
+                      Compact USB-C form factor with fingerprint verification
+                      for mobile, direct, no-fuss deployment.
+                    </p>
+                  </div>
+                  <div
+                    class="rounded-[1.5rem] border border-white/10 bg-white/[0.04] p-5"
+                  >
+                    <div
+                      class="mb-4 flex h-10 w-10 items-center justify-center rounded-2xl bg-white/5 text-amber-300"
+                    >
+                      ◌
+                    </div>
+                    <div class="text-base font-semibold">EMPC integration</div>
+                    <p class="mt-2 text-sm leading-6 text-white/65">
+                      Designed to pair with CrossBar's EMPC stack across app,
+                      browser, cloud, and device flows.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <main>
+      <section id="technology" class="mx-auto max-w-7xl px-6 py-24 lg:px-8">
+        <div class="max-w-3xl">
+          <div
+            class="mb-4 inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.28em] text-amber-300/90"
+          >
+            Why CrossBar
+          </div>
+          <h2
+            class="text-3xl font-semibold tracking-tight text-white sm:text-4xl md:text-5xl"
+          >
+            A security stack that does not force convenience and assurance into
+            a knife fight
+          </h2>
+          <p
+            class="mt-4 max-w-2xl text-sm leading-7 text-white/70 sm:text-base"
+          >
+            The existing CrossBar product language emphasizes usable
+            digital-asset security, and this concept page leans into the same
+            idea: portable hardware, threshold cryptography, and
+            infrastructure-grade trust brought into one coherent product story.
+          </p>
+        </div>
+
+        <div class="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+          <div
+            class="rounded-[1.75rem] border border-white/10 bg-white/[0.03] p-6"
+          >
+            <div class="text-[11px] uppercase tracking-[0.26em] text-white/40">
+              Security model
+            </div>
+            <h3 class="mt-6 text-xl font-semibold leading-7 text-white">
+              Eliminate single points of failure
+            </h3>
+            <p class="mt-3 text-sm leading-7 text-white/65">
+              Threshold-based eMPC distributes trust across devices, people, and
+              infrastructure so compromise does not collapse into one brittle
+              secret.
+            </p>
+          </div>
+          <div
+            class="rounded-[1.75rem] border border-white/10 bg-white/[0.03] p-6"
+          >
+            <div class="text-[11px] uppercase tracking-[0.26em] text-white/40">
+              Verification
+            </div>
+            <h3 class="mt-6 text-xl font-semibold leading-7 text-white">
+              Zero-knowledge signing flow
+            </h3>
+            <p class="mt-3 text-sm leading-7 text-white/65">
+              Key shares never need to meet in one place. Authorization stays
+              verifiable without turning the system into a glowing attack
+              magnet.
+            </p>
+          </div>
+          <div
+            class="rounded-[1.75rem] border border-white/10 bg-white/[0.03] p-6"
+          >
+            <div class="text-[11px] uppercase tracking-[0.26em] text-white/40">
+              Hardware advantage
+            </div>
+            <h3 class="mt-6 text-xl font-semibold leading-7 text-white">
+              Crypto-native silicon architecture
+            </h3>
+            <p class="mt-3 text-sm leading-7 text-white/65">
+              Purpose-built secure processing, dedicated cryptographic
+              acceleration, and hardened key storage work together in one
+              compact device family.
+            </p>
+          </div>
+          <div
+            class="rounded-[1.75rem] border border-white/10 bg-white/[0.03] p-6"
+          >
+            <div class="text-[11px] uppercase tracking-[0.26em] text-white/40">
+              Operational resilience
+            </div>
+            <h3 class="mt-6 text-xl font-semibold leading-7 text-white">
+              Flexible custody and recovery
+            </h3>
+            <p class="mt-3 text-sm leading-7 text-white/65">
+              Support self-custody, institutional flows, backups, rotation, and
+              policy controls without sacrificing usability.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="products" class="border-y border-white/10 bg-white/[0.02]">
+        <div class="mx-auto max-w-7xl px-6 py-24 lg:px-8">
+          <div class="max-w-3xl">
+            <div
+              class="mb-4 inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.28em] text-amber-300/90"
+            >
+              Product family
+            </div>
+            <h2
+              class="text-3xl font-semibold tracking-tight text-white sm:text-4xl md:text-5xl"
+            >
+              Two PHSM form factors. One hardware trust model.
+            </h2>
+            <p
+              class="mt-4 max-w-2xl text-sm leading-7 text-white/70 sm:text-base"
+            >
+              Keep the same CrossBar security narrative while offering clear
+              paths for premium card-based review flows and compact everyday
+              dongle deployment.
+            </p>
+          </div>
+
+          <div class="mt-14 grid gap-6 lg:grid-cols-2">
+            <article
+              class="relative overflow-hidden rounded-[2rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.025))] p-7"
+            >
+              <div
+                class="absolute right-0 top-0 h-36 w-36 rounded-full bg-amber-400/10 blur-3xl"
+              ></div>
+              <div class="relative">
+                <div
+                  class="inline-flex rounded-full border border-amber-300/20 bg-amber-300/10 px-3 py-1 text-xs font-medium text-amber-300"
+                >
+                  Enterprise-grade
+                </div>
+                <h3 class="mt-5 text-3xl font-semibold tracking-tight">
+                  PHSM 8 Series
+                </h3>
+                <div
+                  class="mt-2 text-sm uppercase tracking-[0.26em] text-white/40"
+                >
+                  Flagship active card
+                </div>
+                <p class="mt-5 max-w-xl text-sm leading-7 text-white/68">
+                  Large E-ink review surface, Bluetooth, NFC, and premium
+                  transaction confirmation for high-trust workflows.
+                </p>
+              </div>
+            </article>
+
+            <article
+              class="relative overflow-hidden rounded-[2rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.025))] p-7"
+            >
+              <div
+                class="absolute right-0 top-0 h-36 w-36 rounded-full bg-amber-400/10 blur-3xl"
+              ></div>
+              <div class="relative">
+                <div
+                  class="inline-flex rounded-full border border-amber-300/20 bg-amber-300/10 px-3 py-1 text-xs font-medium text-amber-300"
+                >
+                  Portable by design
+                </div>
+                <h3 class="mt-5 text-3xl font-semibold tracking-tight">
+                  PHSM 6 Series
+                </h3>
+                <div
+                  class="mt-2 text-sm uppercase tracking-[0.26em] text-white/40"
+                >
+                  Compact USB-C dongle
+                </div>
+                <p class="mt-5 max-w-xl text-sm leading-7 text-white/68">
+                  A simpler, cost-effective form factor with fingerprint
+                  verification and direct everyday portability.
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="architecture" class="mx-auto max-w-7xl px-6 py-24 lg:px-8">
+        <div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+          <div>
+            <div
+              class="mb-4 inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.28em] text-amber-300/90"
+            >
+              Architecture
+            </div>
+            <h2
+              class="text-3xl font-semibold tracking-tight text-white sm:text-4xl md:text-5xl"
+            >
+              ReRAM, secure processing, and MPC form one coherent trust boundary
+            </h2>
+            <p
+              class="mt-4 max-w-2xl text-sm leading-7 text-white/70 sm:text-base"
+            >
+              This section translates CrossBar's architecture messaging into a
+              cleaner marketing visual: one side explaining the stack, the other
+              showing how data, policy, and signing flow through it.
+            </p>
+          </div>
+          <div
+            class="rounded-[2rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02))] p-6 shadow-soft"
+          >
+            <div class="grid gap-4 md:grid-cols-3">
+              <div
+                class="rounded-[1.4rem] border border-white/10 bg-[#0c0e12] p-5"
+              >
+                <div class="text-xs uppercase tracking-[0.24em] text-white/40">
+                  Policy Layer
+                </div>
+                <div class="mt-3 text-lg font-semibold">EMPC Orchestration</div>
+                <p class="mt-2 text-sm leading-6 text-white/65">
+                  Threshold rules, approvals, key rotation, backup, recovery.
+                </p>
+              </div>
+              <div
+                class="rounded-[1.4rem] border border-amber-300/20 bg-amber-300/10 p-5"
+              >
+                <div
+                  class="text-xs uppercase tracking-[0.24em] text-amber-200/80"
+                >
+                  Hardware Core
+                </div>
+                <div class="mt-3 text-lg font-semibold text-white">
+                  PHSM Secure Element
+                </div>
+                <p class="mt-2 text-sm leading-6 text-white/78">
+                  MPC computation, secure execution, transaction confirmation,
+                  passkey auth.
+                </p>
+              </div>
+              <div
+                class="rounded-[1.4rem] border border-white/10 bg-[#0c0e12] p-5"
+              >
+                <div class="text-xs uppercase tracking-[0.24em] text-white/40">
+                  Memory Foundation
+                </div>
+                <div class="mt-3 text-lg font-semibold">CrossBar ReRAM</div>
+                <p class="mt-2 text-sm leading-6 text-white/65">
+                  Durable non-volatile secure storage aligned with
+                  tamper-resistant design goals.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="use-cases" class="border-y border-white/10 bg-white/[0.02]">
+        <div class="mx-auto max-w-7xl px-6 py-24 lg:px-8">
+          <div class="max-w-3xl">
+            <div
+              class="mb-4 inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.28em] text-amber-300/90"
+            >
+              Use cases
+            </div>
+            <h2
+              class="text-3xl font-semibold tracking-tight text-white sm:text-4xl md:text-5xl"
+            >
+              From institutional operations to high-assurance personal custody
+            </h2>
+            <p
+              class="mt-4 max-w-2xl text-sm leading-7 text-white/70 sm:text-base"
+            >
+              Position PHSM as a platform, not just a gadget: the hardware
+              endpoint of a broader security system that spans custody,
+              authentication, and embedded trust products.
+            </p>
+          </div>
+          <div class="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+            <div
+              class="rounded-[1.75rem] border border-white/10 bg-[#0b0d10] p-6"
+            >
+              <div
+                class="mb-4 h-1 w-16 rounded-full bg-gradient-to-r from-amber-300 to-orange-500"
+              ></div>
+              <h3 class="text-xl font-semibold text-white">
+                Institutional custody
+              </h3>
+              <p class="mt-3 text-sm leading-7 text-white/65">
+                Configure threshold signing, role-based approvals, and
+                device-backed policies for treasury, exchange, and custody
+                operations.
+              </p>
+            </div>
+            <div
+              class="rounded-[1.75rem] border border-white/10 bg-[#0b0d10] p-6"
+            >
+              <div
+                class="mb-4 h-1 w-16 rounded-full bg-gradient-to-r from-amber-300 to-orange-500"
+              ></div>
+              <h3 class="text-xl font-semibold text-white">
+                High-value self-custody
+              </h3>
+              <p class="mt-3 text-sm leading-7 text-white/65">
+                Keep control of digital assets with stronger hardware assurance
+                than consumer wallets that rely on key reconstruction patterns.
+              </p>
+            </div>
+            <div
+              class="rounded-[1.75rem] border border-white/10 bg-[#0b0d10] p-6"
+            >
+              <div
+                class="mb-4 h-1 w-16 rounded-full bg-gradient-to-r from-amber-300 to-orange-500"
+              ></div>
+              <h3 class="text-xl font-semibold text-white">
+                Passkey authentication
+              </h3>
+              <p class="mt-3 text-sm leading-7 text-white/65">
+                Extend hardware trust into FIDO2 login flows for
+                phishing-resistant identity verification.
+              </p>
+            </div>
+            <div
+              class="rounded-[1.75rem] border border-white/10 bg-[#0b0d10] p-6"
+            >
+              <div
+                class="mb-4 h-1 w-16 rounded-full bg-gradient-to-r from-amber-300 to-orange-500"
+              ></div>
+              <h3 class="text-xl font-semibold text-white">
+                Embedded security products
+              </h3>
+              <p class="mt-3 text-sm leading-7 text-white/65">
+                Use CrossBar's silicon and product architecture as the
+                foundation for secure edge and digital asset applications.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="faq" class="mx-auto max-w-5xl px-6 py-24 lg:px-8">
+        <div class="text-center">
+          <div
+            class="inline-flex rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.28em] text-amber-300"
+          >
+            FAQ
+          </div>
+          <h2
+            class="mt-5 text-4xl font-semibold tracking-tight text-white sm:text-5xl"
+          >
+            Questions future customers will absolutely ask
+          </h2>
+          <p
+            class="mx-auto mt-4 max-w-2xl text-sm leading-7 text-white/68 sm:text-base"
+          >
+            Structured like CrossBar's existing product pages, but tightened up
+            for cleaner scanning and better narrative continuity.
+          </p>
+        </div>
+        <div class="mt-14 grid gap-4">
+          <div
+            class="rounded-[1.5rem] border border-white/10 bg-white/[0.03] p-6"
+          >
+            <div class="text-lg font-semibold text-white">
+              What makes PHSM different from a typical hardware wallet?
+            </div>
+            <p class="mt-3 text-sm leading-7 text-white/65">
+              PHSM is designed around secure MPC computation inside the hardware
+              boundary, paired with CrossBar's ReRAM-based security architecture
+              and FIDO2-ready workflows.
+            </p>
+          </div>
+          <div
+            class="rounded-[1.5rem] border border-white/10 bg-white/[0.03] p-6"
+          >
+            <div class="text-lg font-semibold text-white">
+              Does PHSM support both self-custody and institutional models?
+            </div>
+            <p class="mt-3 text-sm leading-7 text-white/65">
+              Yes. The product and software stack are designed to support
+              customizable threshold policies ranging from individual control to
+              delegated or shared custody structures.
+            </p>
+          </div>
+          <div
+            class="rounded-[1.5rem] border border-white/10 bg-white/[0.03] p-6"
+          >
+            <div class="text-lg font-semibold text-white">
+              Can PHSM be used for authentication as well as asset security?
+            </div>
+            <p class="mt-3 text-sm leading-7 text-white/65">
+              Yes. CrossBar positions PHSM as a hardware trust anchor for both
+              digital asset protection and phishing-resistant FIDO2 passkey
+              authentication.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="px-6 pb-24 lg:px-8">
+        <div
+          class="mx-auto max-w-7xl overflow-hidden rounded-[2.25rem] border border-white/10 bg-[radial-gradient(circle_at_top,rgba(251,191,36,0.18),rgba(255,255,255,0.04)_35%,rgba(255,255,255,0.02)_70%)] p-8 sm:p-10 lg:p-12"
+        >
+          <div class="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
+            <div>
+              <div
+                class="inline-flex rounded-full border border-amber-300/20 bg-amber-300/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.28em] text-amber-300"
+              >
+                Built for serious trust
+              </div>
+              <h2
+                class="mt-5 max-w-3xl text-4xl font-semibold tracking-tight text-white sm:text-5xl"
+              >
+                Bring CrossBar PHSM into your custody, authentication, or
+                embedded security workflow.
+              </h2>
+              <p
+                class="mt-5 max-w-2xl text-sm leading-7 text-white/72 sm:text-base"
+              >
+                Portable hardware. Threshold cryptography. ReRAM-backed
+                assurance. Less magical thinking, more system design.
+              </p>
+            </div>
+            <div class="flex flex-wrap gap-4 lg:justify-end">
+              <a
+                href="#"
+                class="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-black transition hover:bg-amber-100"
+                >Request Demo <span>→</span></a
+              >
+              <a
+                href="#"
+                class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-6 py-3 text-sm font-medium text-white/85 transition hover:bg-white/10"
+                >Download Litepaper</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="border-t border-white/10 px-6 py-8 lg:px-8">
+      <div
+        class="mx-auto flex max-w-7xl flex-col gap-4 text-sm text-white/45 md:flex-row md:items-center md:justify-between"
+      >
+        <div>© 2026 CrossBar-inspired PHSM concept landing page.</div>
+        <div class="flex flex-wrap gap-6">
+          <a href="#" class="transition hover:text-white/75">Products</a>
+          <a href="#" class="transition hover:text-white/75">Documentation</a>
+          <a href="#" class="transition hover:text-white/75">Litepaper</a>
+          <a href="#" class="transition hover:text-white/75">Contact</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
